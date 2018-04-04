@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Styling Components</title>
+</head>
+
+<body>
+    <div id="app">React has not rendered yet</div>
+
+	<script type="text/babel">
+
+		//CHALLENGE - CREATE ONE COMPONENT AND USE PROPS TO RE-CREATE THE PREVIOUS RESULTS
+		class Color extends React.Component {
+			render() {
+				var colorStyle = {
+					height: 50,
+					width: 150,
+					backgroundColor: this.props.name
+				}
+				return(
+					<h1 style={colorStyle}>{this.props.name}</h1>
+				);
+			}
+		}
+
+		ReactDOM.render(
+			<div>
+				<Color name="Red" />
+				<Color name="Orange" />
+				<Color name="Yellow" />
+				<Color name="Green" />
+				<Color name="Blue" />
+				<Color name="Indigo" />
+				<Color name="Violet" />
+			</div>,
+			document.getElementById("app")
+		)
+	</script>
+</body>
+
+</html>
