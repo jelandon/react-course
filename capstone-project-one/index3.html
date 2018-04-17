@@ -1,0 +1,162 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- REACT LIBRARY -->
+	<script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+	<!-- REACT DOM LIBRARY -->
+	<script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+	<!-- BABEL LIBRARY -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>FriendLy</title>
+</head>
+<body>
+	<!-- DESIGNATED LOCATION TO INSERT REACT CONTENT -->
+	<div id="app">React has not rendered yet</div>
+
+	<!-- JAVASCRIPT -->
+	<script type="text/babel">
+		//FriendLy Complex Component
+		// function FriendLy(props) {
+			// 	var friendlyStyle = {
+				// 		display: 'inline-block',
+				// 		margin: 20,
+				// 		height: 300,
+				// 		width: 200,
+				// 		padding: 0,
+				// 		backgroundColor: "#F4F4F4",
+				// 		WebKitFilter: "drop-shadow(0px 0px 5px #555)",
+				// 		filter: "drop-shadow(0px 0px 5px #555)"
+
+				// 	}
+				// 	return(
+				// 		<div style={friendlyStyle}>
+					// 			<Avatar img={props.img}/>
+					// 			<UserName name={props.name}/>
+					// 			<GetConnected />
+					// 		</div>
+					// 	);
+					// }
+
+		//CHALLENGE - Use map method to pass props from person to the FriendLy component
+
+		// FriendLy Complex Component
+		function FriendLy(props) {
+			// renamed props.people to people
+			var people = props.people;
+			// iterate through the array
+			// map creates a new array
+			var peopleItem = people.map(function(person) {
+				// assign styling to Friendly Component
+				var friendlyStyle = {
+					display: 'inline-block',
+					margin: 20,
+					height: 300,
+					width: 200,
+					padding: 0,
+					backgroundColor: "#FFF",
+					WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+					filter: "drop-shadow(0px 0px 5px #555)"
+				};
+				// Return the exact same content but make sure JSX is rendering the right JavaScript object (person)
+				return <div style={friendlyStyle}>
+					<Avatar img={person.img} />
+					<UserName name={person.name} />
+					<GetConnected />
+				</div>
+			});
+			return(
+				<div>{peopleItem}</div>
+			);
+		}
+
+
+					//Avatar Component
+					function Avatar(props){
+						var avatarStyle = {
+							marginLeft: 25,
+							marginTop: 20,
+							width: 150,
+							height: 150,
+							borderRadius: "50%"
+						}
+						return(
+						<img src={props.img} alt="profile pic" style={avatarStyle}/>
+						);
+					}
+					//UserName Component
+					function UserName(props) {
+						var nameStyle = {
+							fontSize: 24,
+							fontFamily: "Arial, Helvetica, sans-serif",
+							textAlign: 'center',
+							margin: 20
+						}
+						return(
+						<h1 style={nameStyle}>{props.name}</h1>
+						);
+					}
+					//GetConnected Complex Component
+					function GetConnected() {
+						var getConnectedStyle = {
+							marginLeft: 15
+						}
+						return(
+						<div style={getConnectedStyle}>
+							<Like />
+							<Share />
+							<Add />
+						</div>
+						);
+					}
+
+					var iconStyle = {
+						margin: 20
+					}
+					//Like Component
+					function Like() {
+						return(
+						<i className="fa fa-thumbs-o-up" aria-hidden="true" style={iconStyle}></i>
+						);
+					}
+					//Share Component
+					function Share() {
+						return(
+						<i className="fa fa-share" aria-hidden="true" style={iconStyle}></i>
+						);
+					}
+					//Add Component
+					function Add() {
+						return(
+						<i className="fa fa-users" aria-hidden="true" style={iconStyle}></i>
+						);
+					}
+
+
+					var people = [
+					{name: "Cheerful", img: "https://randomuser.me/api/portraits/lego/1.jpg"},
+					{name: "Lonely", img:"https://randomuser.me/api/portraits/lego/1.jpg"},
+					{name: "Frustrated", img: "https://randomuser.me/api/portraits/lego/1.jpg"},
+					{name: "Reflective", img: "https://randomuser.me/api/portraits/lego/1.jpg"},
+					{name: "Bored", img: "https://randomuser.me/api/portraits/lego/1.jpg"},
+					{name: "Confident", img: "https://randomuser.me/api/portraits/lego/1.jpg"},
+					{name: "Embarrassed", img: "https://randomuser.me/api/portraits/lego/1.jpg"},
+					{name: "Hungry", img: "https://randomuser.me/api/portraits/lego/1.jpg"},
+					{name: "Euphoric", img: "https://randomuser.me/api/portraits/lego/1.jpg"}
+					];
+
+
+					ReactDOM.render(
+					<FriendLy people={people} />,
+					document.getElementById("app")
+					);
+
+				</script>
+
+			</body>
+			</html>
